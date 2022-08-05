@@ -1,2 +1,41 @@
-# paraview_orbit
-ParaView template project for orbital data visualization (orbits, trajectory points, ground station field of view)
+# Paraview Orbit Visualization
+
+[RU] Шаблон проекта ParaView для трёхмерной визуализации баллистической информации (траектории космических аппаратов, области видимости, Земля*)
+
+[EN] ParaView template project for orbital 3D data visualization (spacecraft orbits, trajectory points, ground stations, fields of view, Earth*)
+
+## Описание
+
+* единицы измерения - километры
+* на данный момент доступна только сферическая фигура Земли (эллипсоид в процессе проработки)
+* 
+
+## Инструкция
+
+### 1. Отображение траектории
+
+1. Загрузить точки траектории в любом формате, который может распарсить ParaView (CSV, TXT и др.)
+2. Для отображения точек назначить данным фильтр TableToPoints, в котором задать размер и цвет точек, и другие параметры отображения.
+
+3. Для отображения линии траектории назначить фильтр ...
+    
+       изображение
+
+4. Для выделения элемента траектории 
+
+### 2. Отображение наземного пункта и зоны видимости
+
+1. 
+
+### 3. Настройка окружения 
+
+1. Для загрузки другой текстуры Земли выбрать в дереве проекта элемент TextureMaptoSphere1, в расширенных настройках Lightning -> Texture выбрать файл текстуры. Для корректного отображения
+* текстура должна отображать поверхность Земли в равнопромежуточной картографической проекции (Equirectangular projection),
+* в расширенных настройках TextureMaptoSphere1 в разделе Properties выключить Prevent Seam,
+* в расширенных настройках TextureMaptoSphere1 в разделе Lightning выставить включить Seamless U.
+2. Для включения/выключения плоскости экватора и гринвича 
+
+## Другие источники текстур/Othed texture sources
+
+* https://www.solarsystemscope.com/textures/
+* https://visibleearth.nasa.gov/
