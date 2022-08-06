@@ -6,11 +6,15 @@
 
 Шаблон проекта ParaView для трёхмерной визуализации баллистической информации (траектории космических аппаратов, области видимости, Земля). Единицы измерения - километры. На данный момент доступна только сферическая фигура Земли (эллипсоид в процессе проработки).
 
-* TextureMaptoSphere1 - текстура Земли
-* EquatorDisk - условный диск экватора
-* GreenwichDisk - условный диск гринвичского меридиана
-* LatGrid_ProgrammableSource - скрипт для отображения сетки координат по широте
-* LonGrid_ProgrammableSource - скрипт для отображения сетки координат по долготе
+* `TextureMaptoSphere1` - текстура Земли
+* `EquatorDisk` - условный диск экватора (`Disk Source`)
+* `GreenwichDisk` - условный диск гринвичского меридиана (`Disk Source`)
+* `LatGrid_ProgrammableSource` - скрипт для отображения сетки координат по широте
+* `LonGrid_ProgrammableSource` - скрипт для отображения сетки координат по долготе
+* `GroundStation` - обозначение наземного пункта (`Sphere Source`)
+* `ConeOfView` - поле обзора наземного пункта  (`Cone Source`)
+* `TableToPoints` - фильтр, визуализирующий таблицу с точками траектории как цепочку точек
+* `TableToTrajectoryFilter` - фильтр, визуализирующий таблицу с точками траектории как линию (`Programmable Filter`)
 
 ## Инструкция
 
@@ -37,7 +41,7 @@
     y = EARTH_RADIUS_KM * sin(radians(longitude_deg)) * cos(radians(latitude_deg))
     z = EARTH_RADIUS_KM * sin(radians(latitude_deg))
     ```
-2. Создать конус (`Sources → Cone`)
+2. Создать конус зоны видимости (`Sources → Cone`)
   * задать ему `Height` и `Radius` в соответствии с шириной (углом) поля обзора,
   * задать тройку смещений `Center`: `[Height/2, 0, 0]`,
   * задать `Direction` `[-1, 0, 0]`,
