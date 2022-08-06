@@ -1,41 +1,76 @@
 # Paraview Orbit Visualization
 
-[RU] Шаблон проекта ParaView для трёхмерной визуализации баллистической информации (траектории космических аппаратов, области видимости, Земля*)
-
-[EN] ParaView template project for orbital 3D data visualization (spacecraft orbits, trajectory points, ground stations, fields of view, Earth*)
-
 ## Описание
 
-* единицы измерения - километры
-* на данный момент доступна только сферическая фигура Земли (эллипсоид в процессе проработки)
-* 
+Шаблон проекта ParaView для трёхмерной визуализации баллистической информации (траектории космических аппаратов, области видимости, Земля). Единицы измерения - километры. На данный момент доступна только сферическая фигура Земли (эллипсоид в процессе проработки).
+
+* TextureMaptoSphere1 - текстура Земли
+* EquatorDisk - условный диск экватора
+* GreenwichDisk - условный диск гринвичского меридиана
+* LatGrid_ProgrammableSource - скрипт для отображения сетки координат по широте
+* LonGrid_ProgrammableSource - скрипт для отображения сетки координат по долготе
 
 ## Инструкция
 
 ### 1. Отображение траектории
 
-1. Загрузить точки траектории в любом формате, который может распарсить ParaView (CSV, TXT и др.)
-2. Для отображения точек назначить данным фильтр TableToPoints, в котором задать размер и цвет точек, и другие параметры отображения.
-
-3. Для отображения линии траектории назначить фильтр ...
-    
-       изображение
-
-4. Для выделения элемента траектории 
+1. Загрузить файл, содержащий ранее полученные точки траектории спутника, в проект (`File → Open`). Файл в любом формате, который может распарсить ParaView (CSV, TXT и др.).
+2. Для визуализации точек траектории
+  * выбрать загруженную таблицу данных (п.1) в дереве проекта,
+  * назначить ей фильтр `TableToPoints`, в котором задать размер и цвет точек, цвет, прозрачность, и другие параметры отображения.
+3. Для отображения линии или трубки траектории
+  * выбрать загруженную таблицу данных (п.1) в дереве проекта,
+  * назначить ей фильтр `ProgrammableFilter`,
+  * в поле `Script` в настройках фильтра ввести код из файла `table_to_trajectory_filter.py`.
 
 ### 2. Отображение наземного пункта и зоны видимости
 
-1. 
+1. Создать точку (`Sources → Sphere`) с геоцентрическими координатами наземной станции в АГСК. Для сферической Земли координаты рассчитываются на основе широты и долготы:
+    ```python
+    from math import sin, cos, radians
+    EARTH_RADIUS_KM = 6371.0
+    latitude_deg = ...
+    longitude_deg = ...
+    x = EARTH_RADIUS_KM * cos(radians(longitude_deg)) * cos(radians(latitude_deg))
+    y = EARTH_RADIUS_KM * sin(radians(longitude_deg)) * cos(radians(latitude_deg))
+    z = EARTH_RADIUS_KM * sin(radians(latitude_deg))
+    ```
+2. Создать конус (`Sources → Cone`)
+  * задать ему `Height` и `Radius` в соответствии с шириной (углом) поля обзора,
+  * задать тройку смещений `Center`: `[Height/2, 0, 0]`,
+  * задать `Direction` `[-1, 0, 0]`,
+  * задать в Translation те же координаты, которые указывались при создании сферы - наземного пункта,
+  * задать в Orientation `[0, -широта, долгота]`.
 
-### 3. Настройка окружения 
+### 3. Настройка окружения
 
-1. Для загрузки другой текстуры Земли выбрать в дереве проекта элемент TextureMaptoSphere1, в расширенных настройках Lightning -> Texture выбрать файл текстуры. Для корректного отображения
-* текстура должна отображать поверхность Земли в равнопромежуточной картографической проекции (Equirectangular projection),
-* в расширенных настройках TextureMaptoSphere1 в разделе Properties выключить Prevent Seam,
-* в расширенных настройках TextureMaptoSphere1 в разделе Lightning выставить включить Seamless U.
-2. Для включения/выключения плоскости экватора и гринвича 
+1. Для загрузки другой текстуры Земли выбрать в дереве проекта элемент `TextureMaptoSphere1`, в расширенных настройках `Lightning -> Texture` выбрать свой файл текстуры. Для корректного отображения
+  * текстура должна отображать поверхность Земли в   равнопромежуточной картографической проекции   (Equirectangular projection),
+  * в расширенных настройках элемента `TextureMaptoSphere1` в   разделе `Properties` выключить `Prevent Seam`,
+  * в расширенных настройках элемента `TextureMaptoSphere1` в   разделе `Lightning` выставить включить `Seamless U`.
+  * Открытые текстуры Земли можно найти на
+    * https://www.solarsystemscope.com/textures/
+    * https://visibleearth.nasa.gov/
+2. Для включения/выключения плоскости экватора и гринвичского меридиана нажать на "глаз" в дереве проекта (`Pipeline browser`).
 
-## Другие источники текстур/Othed texture sources
+---
 
-* https://www.solarsystemscope.com/textures/
-* https://visibleearth.nasa.gov/
+## Description
+
+ParaView template project for orbital 3D data visualization (spacecraft orbits, trajectory points, ground stations, fields of view, Earth). Distance units - kilometers. Only spherical Earh is presented (ellipsoid is in progress).
+
+## Manual
+
+    <in progress...>
+
+### 1. Trajectory visualization
+
+    <in progress...>
+
+### 2. Ground station field of view visualization
+
+    <in progress...>
+
+### 3. Scene setup
+
+    <in progress...>
