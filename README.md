@@ -16,8 +16,8 @@
   * `ConeOfView` - поле обзора наземного пункта  (`Cone Source`)
   * `TableToPoints` - фильтр, визуализирующий таблицу с точками траектории как цепочку точек
   * `TableToTrajectoryFilter` - фильтр, визуализирующий таблицу с точками траектории как линию (`Programmable Filter`)
-* '8k_earth_daymap.jpg' - текстура Земли в равнопромежуточной картографической проекции (Equirectangular projection), [источник commons.wikimedia.org](https://commons.wikimedia.org/wiki/File:Solarsystemscope_texture_8k_earth_daymap.jpg)
-* 'latitude_grid_source.py' - файл кода Python для `LatGrid_ProgrammableSource`
+* `8k_earth_daymap.jpg` - текстура Земли в равнопромежуточной картографической проекции (Equirectangular projection), [источник commons.wikimedia.org](https://commons.wikimedia.org/wiki/File:Solarsystemscope_texture_8k_earth_daymap.jpg)
+* `latitude_grid_source.py` - файл кода Python для `LatGrid_ProgrammableSource`
 * `longitude_grid_source.py` - файл кода Python для `LonGrid_ProgrammableSource`
 * `orbit_iss.txt` - файл с точками траектории без привязки к параметрам какого-то конкретного КА
 * `table_to_trajectory_filter.py`- файл кода Python для `TableToTrajectoryFilter`
@@ -71,15 +71,21 @@
 
 ParaView template project for orbital 3D data visualization (spacecraft orbits, trajectory points, ground stations, fields of view, Earth). Distance units - kilometers. Only spherical Earh is presented by now (ellipsoid is in progress).
 
-* `TextureMaptoSphere1` - Earth texture
-* `EquatorDisk` - visible equator plane (`Disk Source`)
-* `GreenwichDisk` - visible greenwich meridian plane (`Disk Source`)
-* `LatGrid_ProgrammableSource` - python script for latitudes grid display (`Programmable Source`)
-* `LonGrid_ProgrammableSource` - python script for longitude grid display  (`Programmable Source`)
-* `GroundStation` - ground station mark (`Sphere Source`)
-* `ConeOfView` - ground station cone of view  (`Cone Source`)
-* `TableToPoints` - filter for display table data as points
-* `TableToTrajectoryFilter` - filter for display table data as polyline/trajectory (`Programmable Filter`)
+* `ParaviewOrbit.pvsm` - ParaView project file (Paraview 5.10.1, Windows 10).
+  * `TextureMaptoSphere1` - Earth texture
+  * `EquatorDisk` - visible equator plane (`Disk Source`)
+  * `GreenwichDisk` - visible greenwich meridian plane (`Disk Source`)
+  * `LatGrid_ProgrammableSource` - python script for latitudes grid display (`Programmable Source`)
+  * `LonGrid_ProgrammableSource` - python script for longitude grid display  (`Programmable Source`)
+  * `GroundStation` - ground station mark (`Sphere Source`)
+  * `ConeOfView` - ground station cone of view  (`Cone Source`)
+  * `TableToPoints` - filter for display table data as points
+  * `TableToTrajectoryFilter` - filter for display table data as polyline/trajectory (`Programmable Filter`)
+* `8k_earth_daymap.jpg` - Earth texture in equirectangular projection, [source commons.wikimedia.org](https://commons.wikimedia.org/wiki/File:Solarsystemscope_texture_8k_earth_daymap.jpg)
+* `latitude_grid_source.py` - python code for `LatGrid_ProgrammableSource`
+* `longitude_grid_source.py` - python code for `LonGrid_ProgrammableSource`
+* `orbit_iss.txt` - some random spacecraft trajectory points just for example
+* `table_to_trajectory_filter.py`- python code for `TableToTrajectoryFilter`
 
 ## Manual
 
