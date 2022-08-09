@@ -6,15 +6,21 @@
 
 Шаблон проекта ParaView для трёхмерной визуализации баллистической информации (траектории космических аппаратов, области видимости, Земля). Единицы измерения - километры. На данный момент доступна только сферическая фигура Земли (эллипсоид в процессе проработки).
 
-* `TextureMaptoSphere1` - текстура Земли
-* `EquatorDisk` - условный диск экватора (`Disk Source`)
-* `GreenwichDisk` - условный диск гринвичского меридиана (`Disk Source`)
-* `LatGrid_ProgrammableSource` - скрипт для отображения сетки координат по широте
-* `LonGrid_ProgrammableSource` - скрипт для отображения сетки координат по долготе
-* `GroundStation` - обозначение наземного пункта (`Sphere Source`)
-* `ConeOfView` - поле обзора наземного пункта  (`Cone Source`)
-* `TableToPoints` - фильтр, визуализирующий таблицу с точками траектории как цепочку точек
-* `TableToTrajectoryFilter` - фильтр, визуализирующий таблицу с точками траектории как линию (`Programmable Filter`)
+* `ParaviewOrbit.pvsm` - файл проекта ParaView 5.10.1, Windows 10.
+  * `TextureMaptoSphere1` - текстура Земли
+  * `EquatorDisk` - условный диск экватора (`Disk Source`)
+  * `GreenwichDisk` - условный диск гринвичского меридиана (`Disk Source`)
+  * `LatGrid_ProgrammableSource` - скрипт для отображения сетки координат по широте
+  * `LonGrid_ProgrammableSource` - скрипт для отображения сетки координат по долготе
+  * `GroundStation` - обозначение наземного пункта (`Sphere Source`)
+  * `ConeOfView` - поле обзора наземного пункта  (`Cone Source`)
+  * `TableToPoints` - фильтр, визуализирующий таблицу с точками траектории как цепочку точек
+  * `TableToTrajectoryFilter` - фильтр, визуализирующий таблицу с точками траектории как линию (`Programmable Filter`)
+* '8k_earth_daymap.jpg' - текстура Земли в равнопромежуточной картографической проекции (Equirectangular projection), [источник commons.wikimedia.org](https://commons.wikimedia.org/wiki/File:Solarsystemscope_texture_8k_earth_daymap.jpg)
+* 'latitude_grid_source.py' - файл кода Python для `LatGrid_ProgrammableSource`
+* `longitude_grid_source.py` - файл кода Python для `LonGrid_ProgrammableSource`
+* `orbit_iss.txt` - файл с точками траектории без привязки к параметрам какого-то конкретного КА
+* `table_to_trajectory_filter.py`- файл кода Python для `TableToTrajectoryFilter`
 
 ## Инструкция
 
@@ -51,7 +57,7 @@
 ### 3. Настройка окружения
 
 1. Для загрузки другой текстуры Земли выбрать в дереве проекта элемент `TextureMaptoSphere1`, в расширенных настройках `Lightning -> Texture` выбрать свой файл текстуры. Для корректного отображения
-  * текстура должна отображать поверхность Земли в   равнопромежуточной картографической проекции   (Equirectangular projection),
+  * текстура должна отображать поверхность Земли в равнопромежуточной картографической проекции   (Equirectangular projection),
   * в расширенных настройках элемента `TextureMaptoSphere1` в   разделе `Properties` выключить `Prevent Seam`,
   * в расширенных настройках элемента `TextureMaptoSphere1` в   разделе `Lightning` выставить включить `Seamless U`.
   * Открытые текстуры Земли можно найти на
