@@ -89,11 +89,16 @@ ParaView template project for orbital 3D data visualization (spacecraft orbits, 
 
 ## Manual
 
-    <in progress...>
-
 ### 1. Trajectory visualization
 
-    <in progress...>
+1. Open trajectory data file (`File → Open`) in any format ParaView  can parse (CSV, TXT and oth.).
+2. To show trajectory as chain of points
+  * select loaded table in project tree,
+  * apply `TableToPoints` filter, setup point size, color, transparancy and other display settings.
+3. To show trajectory as line
+  * select loaded table in project tree,
+  * apply `ProgrammableFilter`,
+  * in the settings in `Script` field enter code from `table_to_trajectory_filter.py`.
 
 ### 2. Ground station field of view visualization
 
