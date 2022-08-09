@@ -102,7 +102,22 @@ ParaView template project for orbital 3D data visualization (spacecraft orbits, 
 
 ### 2. Ground station field of view visualization
 
-    <in progress...>
+1. Create ground station mark (`Sources → Sphere`) at ESEF (Earth Centered Earth Fixed) coordinates. Script for calculation of ESEF coordinates from latitude and longitude:
+    ```python
+    from math import sin, cos, radians
+    EARTH_RADIUS_KM = 6371.0
+    latitude_deg = ...
+    longitude_deg = ...
+    x = EARTH_RADIUS_KM * cos(radians(longitude_deg)) * cos(radians(latitude_deg))
+    y = EARTH_RADIUS_KM * sin(radians(longitude_deg)) * cos(radians(latitude_deg))
+    z = EARTH_RADIUS_KM * sin(radians(latitude_deg))
+    ```
+2. Create cone of view (`Sources → Cone`)
+  * set `Height` and `Radius` to get necessary size and cone angle,
+  * set `Center`: `[Height/2, 0, 0]`,
+  * set `Direction` : `[-1, 0, 0]`,
+  * set `Translation` : same coordinates as for ground station mark,
+  * set `Orientation` : `[0, -latitude, longitude]`.
 
 ### 3. Scene setup
 
