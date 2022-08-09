@@ -106,4 +106,11 @@ ParaView template project for orbital 3D data visualization (spacecraft orbits, 
 
 ### 3. Scene setup
 
-    <in progress...>
+1. For use of another Earth texture go to `TextureMaptoSphere1`, in settings `Lightning -> Texture` choose another texture image. For correct display
+  * texture must be in equirectangular map projection,
+  * in `TextureMaptoSphere1` extended settings in `Properties` enable `Prevent Seam`,
+  * in `TextureMaptoSphere1` extended settings in `Lightning` enable `Seamless U`.
+  * another free Earth texture sources
+    * https://www.solarsystemscope.com/textures/
+    * https://visibleearth.nasa.gov/
+2. For show/hide equator and greenwich meridian planes click "eye" in project tree (`Pipeline browser`).
