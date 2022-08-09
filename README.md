@@ -63,7 +63,17 @@
 
 ## Description
 
-ParaView template project for orbital 3D data visualization (spacecraft orbits, trajectory points, ground stations, fields of view, Earth). Distance units - kilometers. Only spherical Earh is presented (ellipsoid is in progress).
+ParaView template project for orbital 3D data visualization (spacecraft orbits, trajectory points, ground stations, fields of view, Earth). Distance units - kilometers. Only spherical Earh is presented by now (ellipsoid is in progress).
+
+* `TextureMaptoSphere1` - Earth texture
+* `EquatorDisk` - visible equator plane (`Disk Source`)
+* `GreenwichDisk` - visible greenwich meridian plane (`Disk Source`)
+* `LatGrid_ProgrammableSource` - python script for latitudes grid display (`Programmable Source`)
+* `LonGrid_ProgrammableSource` - python script for longitude grid display  (`Programmable Source`)
+* `GroundStation` - ground station mark (`Sphere Source`)
+* `ConeOfView` - ground station cone of view  (`Cone Source`)
+* `TableToPoints` - filter for display table data as points
+* `TableToTrajectoryFilter` - filter for display table data as polyline/trajectory (`Programmable Filter`)
 
 ## Manual
 
